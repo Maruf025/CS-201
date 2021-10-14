@@ -6,25 +6,25 @@ int main()
     while(1)
     {
         int choice;
-        printf("Select a choice: \n 1. Addition \n 2. Multiplication \n 3. Exit \n");
+        printf("Select a choice: \n 1) Addition \n 2) Multiplication \n 3) Exit \n");
         printf("Enter your choice: ");
         scanf("%d",&choice);
         if(choice==1)
         {
-            long binary1,binary2;
-            printf("Enter two binary no.s: ");
-            scanf("%ld %ld",&binary1,&binary2);
-            int i=0,reminder=0,sum[20];
-            while(binary1!=0 || binary2!=0)
+            long n1,n2;
+            printf("Enter two binary numbers: ");
+            scanf("%ld %ld",&n1,&n2);
+            int i=0,rem=0,sum[20];
+            while(n1!=0 || n2!=0)
             {
-                sum[i++]=(binary1%10 + binary2%10 + reminder)%2;
-                reminder=(binary1%10 + binary2%10 + reminder)/2;
-                binary1=binary1/10;
-                binary2=binary2/10;
+                sum[i++]=(n1%10 + n2%10 + rem)%2;
+                rem=(n1%10 + n2%10 + rem)/2;
+                n1=n1/10;
+                n2=n2/10;
             }
-            if(reminder!=0)
+            if(rem!=0)
             {
-                sum[i++]=reminder;
+                sum[i++]=rem;
                 i--;
                 printf("Sum is: ");
                 while(i>=0)
@@ -35,32 +35,33 @@ int main()
         }
         else if(choice==2)
         {
-            long binary1,binary2,multiply=0;
-            printf("Enter two binary no.s: ");
-            scanf("%ld %ld",&binary1,&binary2);
-            int digit,factor=1;
-            while(binary2!=0)
+            long n1,n2,product=0;
+            printf("Enter two binary numbers: ");
+            scanf("%ld %ld",&n1,&n2);
+            int num,factor=1;
+            while(n2!=0)
             {
-                digit=binary2%10;
-                if(digit==1)
+                num=n2%10;
+                if(num==1)
                 {
-                    binary1=binary1*factor;
-                    multiply=binaryproduct(binary1,multiply);
+                    n1=n1*factor;
+                    product=binaryproduct(n1,product);
                 }
                 else
                 {
-                    binary1=binary1*factor;
-                    binary2=binary2/10;
+                    n1=n1*factor;
+                    n2=n2/10;
                     factor=10;
                 }
             }
-            printf("Product is: %ld\n",multiply);
+            printf("Product is: %ld\n",product);
         }
         else
         {
-            printf("Exiting..");
+            printf("Terminating");
             break;
         }
     }
     return 0;
 }
+
